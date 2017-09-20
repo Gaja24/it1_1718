@@ -1,3 +1,28 @@
 body{
     background:teal;
 }
+h1{
+    font-family: yantramanav, sans-serif;
+    font-weight: 500%;
+    font-size: 200%;
+    color: white;
+    text-align: center;
+}
+h2{
+    font-family: yantramanav, sans-serif;
+    font-weight: 500%;
+    font-size: 200;
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 20px;
+    max-width: 500px;
+    margin: auto;
+    color: black;
+
+}
+
+h2:hover{
+    border: 5px solid yellowgreen;
+    color: yellowgreen;
+    font-size: 150%;
+}
