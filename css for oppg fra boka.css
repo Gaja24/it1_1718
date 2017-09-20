@@ -1,0 +1,32 @@
+h1 {
+    border:solid;
+border-radius: 20px;
+margin: auto;
+    max-width: 350px;
+text-align: center;
+    font-size: 40px;
+    font-family: sans-serif;
+    color: greenyellow;
+
+}
+h2{
+    color: greenyellow;
+
+}
+ body {text-align: center;
+background-color: darkblue;
+
+    }
+ p {
+     color: greenyellow;
+ }
+table {
+    color: blanchedalmond;
+
+
+}
+ol{
+    text-align:start;
+;
+
+}
