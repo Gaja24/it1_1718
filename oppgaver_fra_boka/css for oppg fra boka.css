@@ -2,6 +2,7 @@ h1 {
     border:solid;
 border-radius: 20px;
 margin: auto;
+
     max-width: 350px;
 text-align: center;
     font-size: 40px;
@@ -29,4 +30,21 @@ ol{
     text-align:start;
 ;
 
+
+
 }
+ul {
+    color: yellow;:
+
+    text-align: start;
+
+}
+h2{
+    text-align: center;
+
+}
+table {
+    color: greenyellow;
+
+}
+
