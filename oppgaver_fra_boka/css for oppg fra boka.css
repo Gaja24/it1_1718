@@ -44,7 +44,25 @@ h2{
 
 }
 table {
-    color: greenyellow;
+    color:greenyellow;
 
 }
+
+a{
+    color: #dd0000;
+    font-weight: bold;
+
+}
+a:hover {
+
+
+    color: fuchsia;
+}
+
+h1:hover {
+    color: fuchsia;
+
+
+}
+
 
