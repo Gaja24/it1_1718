@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style>
+
+    body{
+        margin:0;
+        text-align: center;
+    }
+
+    div.grid{
+        display: grid;
+        grid-template-areas:
+        "fotball"
+        "sove"
+        "mat"
+        "skole";
+    }
+
+    div.fotball{
+        background-color: #E5F9E0;
+        grid-area: fotball;
+    }
+
+    div.sove{
+        background-color: #64A6BD;
+        grid-area: sove;
+    }
+
+    div.mat{
+        background-color: #AED1E6;
+        grid-area: mat;
+    }
+
+    div.skole{
+        background-color: #91C4F2;
+        grid-area: skole;
+    }
+
+    @media(min-width: 500px){
+        div.grid{
+            grid-template-columns: 1fr 3fr;
+            grid-template-areas:
+        "fotball  sove"
+        "mat     skole";
+        }
+
+    }
+
+
+
+
+
+
+
+
+</style>
+
+
+
+
+</head>
+<body>
+
+
+<div class="grid">
+    <div class="fotball">
+        <h3>Fotball</h3>
+        <p>I lika å spæelle fotball. Det er artig!</p>
+    </div>
+
+    <div class="mat">
+        <h3> Mat</h3>
+         <p> I e svoltn</p>
+    </div>
+
+    <div class="sove">
+        <h3>Sove</h3>
+        <p>I e trøtt</p>
+
+    </div>
+
+    <div class="skole">
+        <h3>Skole</h3>
+        <p>I vell hæm</p>
+    </div>
+
+
+</div>
+
+
+
+
+
+</body>
+</html>

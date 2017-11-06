@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<style>
+    Body{
+        margin: 0;
+        text-align: center;
+    }
+    div.grid{
+        display: grid;
+        grid-template-areas:
+                "header"
+                "nav"
+                "main"
+                "aside1"
+                "aside2"
+                "footer";
+        grid-gap: 1px;
+    }
+
+    div.header{
+        background-color: #28abe3;
+        grid-area: header;
+    }
+
+    div.main{
+        background-color: darkmagenta;
+        grid-area: main;
+        padding: 10px;
+    }
+
+    div.nav{
+        background-color: #4aaaa5;
+        grid-area: nav;
+
+    }
+
+    div.aside1{
+        background-color: #dd0000;
+        grid-area: aside1;
+    }
+
+    div.aside2{
+        background-color: #f7eac8;
+        grid-area: aside2;
+    }
+
+    div.footer{
+        background-color: greenyellow;
+        color: #28abe3;
+        grid-area: footer;
+    }
+
+    @media(min-width: 500px){
+        div.grid{
+        grid-template-columns: 1fr 3fr;
+        grid-template-areas:
+        "header     header"
+        "nav        nav"
+        "main       aside1"
+        "aside2     footer";
+    }
+    }
+
+</style>
+
+
+</head>
+<body>
+<div class="grid">
+    <div class="header">
+        <p>
+            Header
+        </p>
+
+    </div>
+
+    <div class="nav">
+        <p>
+            Nav
+        </p>
+
+    </div>
+
+    <div class="main">
+        <h2
+            Main
+        </h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet assumenda at consequuntur doloremque eos est labore magni nesciunt nostrum, officiis porro, praesentium quos reiciendis repellat, saepe sed unde voluptatem?</p>
+    </div>
+
+    <div class="aside1">
+        <p>Aside1</p>
+    </div>
+
+    <div class="aside2">
+        <p>Aside2</p>
+    </div>
+
+    <div class="footer">
+        <p> Footer</p>
+    </div>
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+body{
+    background-color: #f7eac8;
+    font-family: sans-serif;
+
+}
+h1{
+    text-align: center;
+    border: groove darkblue;
+
+}
+
+div.pakker{
+    background: lightgray;
+    width: 850px;
+    margin: auto;
+
+}
+
+ul{
+    border: 2px solid darkblue;
+    list-style-type: none;
+    margin: auto;
+    padding: 15px;
+    width: 80px;
+    text-align: left;
+}
+ul a{
+    display: block;
+    background-color: #28abe3;
+    padding: 10px;
+    margin: 2px;
+    text-decoration: none;
+    font-weight: bold;
+    color: darkblue;
+    border-radius: 5px;
+}
+li a:hover{
+    background-color: darkblue;
+    box-shadow: greenyellow 10px 2px 5px;
+    color: greenyellow;
+}

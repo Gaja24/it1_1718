@@ -1,0 +1,47 @@
+body{
+    background-color: #7accc8;
+    font-family: sans-serif;
+}
+
+div.pakker {
+    width:900px;
+    margin: auto;
+    padding:50px;
+    background-color: whitesmoke;
+
+}
+
+h1{
+    color: #4aaaa5;
+    text-align: center;
+    margin-top: 0;
+    font-size: 75px;
+}
+
+h2 {
+    color: #a3d29c;
+    text-align: center;
+    font-size: 18px;
+    
+    
+}
+
+h3 {
+    color: #eb7260;
+}
+p {
+    color: #35404f;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+table {
+    border: solid;
+}
+li {
+    color: blue;
+    text-align: start;
+}
