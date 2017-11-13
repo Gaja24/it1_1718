@@ -5,6 +5,35 @@
     <title>Title</title>
 <style>
 
+div.meny{
+    background-color: #f7eac8;
+    grid-area: meny;
+}
+.meny ul {
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.meny li{
+    margin: 0;
+    flex: 1 1;
+}
+
+.meny a{
+    color: #EBF2FA;
+    width: 100%;
+    display: block;
+    padding: 1.15em 3%;
+    text-align: center;
+    text-decoration: none;
+
+}
     body{
         margin:0;
         text-align: center;
@@ -13,10 +42,11 @@
     div.grid{
         display: grid;
         grid-template-areas:
-        "fotball"
-        "sove"
-        "mat"
-        "skole";
+                "meny"
+                "sove"
+                "fotball"
+                "mat"
+                "skole";
     }
 
     div.fotball{
@@ -27,7 +57,11 @@
     div.sove{
         background-color: #64A6BD;
         grid-area: sove;
+        text-decoration: none;
     }
+
+
+
 
     div.mat{
         background-color: #AED1E6;
@@ -39,12 +73,18 @@
         grid-area: skole;
     }
 
+
+
     @media(min-width: 500px){
+        .meny ul{
+            flex-direction: row;
+        }
         div.grid{
-            grid-template-columns: 1fr 3fr;
+            grid-template-columns: 2fr 2fr;
             grid-template-areas:
-        "fotball  sove"
-        "mat     skole";
+                    "meny   many"
+                    "fotball  sove"
+                    "mat     skole";
         }
 
     }
@@ -64,6 +104,13 @@
 </head>
 <body>
 
+<div class="meny">
+<ul>
+    <li><a href="menyer1.html">Link 1 </a></li>
+    <li><a href="lmeny2.html">Link 2</a></li>
+    <li><a href="lmeny3.html">Link 3</a></li>
+</ul>
+</div>
 
 <div class="grid">
     <div class="fotball">
@@ -78,10 +125,15 @@
 
     <div class="sove">
         <h3>Sove</h3>
-        <p>I e trøtt</p>
+        <p>I vell sove</p>
 
-    </div>
+         <ul>
+            <li><a href="https://www.abcnyheter.no/helse-og-livsstil/helse/2016/05/30/195219970/sover-du-lite">Sover du for mye?</a></li>
+            <li><a href="http://www.lommelegen.no/legesvar/sover-myenarkolepsi">sover du for lite?</a></li>
+            <li><a href="https://www.bokkilden.no/SamboWeb/produkt.do?produktId=1664983">Sover du ikke?</a></li>
+        </ul>
 
+        </div>
     <div class="skole">
         <h3>Skole</h3>
         <p>I vell hæm</p>
@@ -89,6 +141,12 @@
 
 
 </div>
+
+
+    </div>
+
+
+
 
 
 
