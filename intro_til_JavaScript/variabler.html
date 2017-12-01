@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Variabler</title>
+</head>
+<body>
+
+
+<div class="pakker">
+    <ul class="navn">
+
+    </ul>
+</div>
+
+<script>
+    var minForsteVariabel = "Her er min første variabel";
+
+    //alert(minForsteVariabel);
+
+    //opptretter variabeler for tall.
+    var tall1 = 42;
+    var tall2 = 58;
+    var tallSum = tall1+tall2;
+    var tallDiff = tall2-tall1;
+    var tallProdukt = tall1*tall2;
+
+    console.log("Tall 1: " + tall1);
+    console.log("Tall 2: " + tall2);
+    console.log("Tall 1 + tall 2: " + tall1+tall2);
+    console.log("TallSum: " + tallSum);
+    console.log("TallDiff: " + tallDiff);
+    console.log(tallProdukt);
+
+    //optretter variabler med tekst (streng)
+    var navn1 = "Ga"
+    var navn2 = "Jon"
+    console.log(navn1+ " og " + navn2 + " sier hei til dere.");
+
+    //opptretter array med tall og tekst
+    var tallArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
+    var sumArray = 0;
+    //console.log(tallArray);
+    //console.log(tallArray[23]);
+    console.log(tallArray.length);
+
+    for(var  i = 0; i<tallArray.length; i++){
+        //console.log(tallArray[i]);
+
+        sumArray = sumArray + tallArray[i];
+    }
+    console.log(sumArray);
+
+    //opptretter array med tall og tekst
+    var navnArray = ["Gaja", "Jona", "Noah", "Raja"];
+
+    for(var x =0; x<navnArray.length; x++){
+
+        console.log(navnArray[x]);
+    }
+
+
+    var  navnE = document.querySelector(".navn");
+
+    //navnE.innerHTML = "<li> Gajon </li>";
+
+
+    for(x in navnArray){
+        navnE.innerHTML = navnE.innerHTML +  "<li>" + navnArray[x] + " er " + tallArray[x] + "år </li>";
+    }
+
+</script>
+
+</body>
+</html>

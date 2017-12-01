@@ -38,6 +38,6 @@ ul a{
 }
 li a:hover{
     background-color: darkblue;
-    box-shadow: greenyellow 10px 2px 5px;
+    box-shadow: yellowgreen 10px 2px 5px;
     color: greenyellow;
 }

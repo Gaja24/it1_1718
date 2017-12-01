@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><link>
+
+    <meta charset="UTF-8">
+    <title>IT-1:Gaja</title>
+
+    <link rel="stylesheet" href="css/Style.css">
+    <link href="https://fonts.googleapis.com/css?family=Yantramanav" rel="stylesheet">
+
+
+</head>
+<body>
+
+<div class="grid">
+    <div class="meny">
+        <ul>
+            <li><a href="alt.html">Oppgaver i boka</a></li>
+            <li><a href="lmeny2.html">Bilder</a></li>
+            <li><a href="../prøve1_bildebehandling_css_og_html/index_prøve.html">Prøver</a></li>
+            <li><a href="">Intro til diverse ting</a></li>
+        </ul>
+    </div>
+
+    <div class="pakker">
+    <h1> IT-1:Gaja</h1>
+
+    <a href="../oppgaver_fra_boka/om%20meg.html" style="text-decoration: none">
+        <H2>OM MEG</H2>
+    </a>
+</div>
+
+
+
+    <div class="ball"></div>
+
+    <script>
+
+        var ballLeft = 0;
+        var ballTop = 0;
+        var divBall = document.querySelector("#ball");
+
+        document.onkeydown = function (evt) {
+            evt = evt || window. event;
+            if (evt.keyCode === 40)
+            {
+                ballTop +=10;
+                divBall.style.top =ballTop + "px";
+            }
+            else if (evt.keyCode === 38)
+            {
+                ballTop -=10;
+                divBall.style.top = ballTop + "px";
+            }
+            else if (evt.keyCode === 39)
+            {
+                ballLeft += 10;
+                divBall.style.left = ballLeft + "px";
+            }
+
+            else if (evt.keyCode === 37)
+            {
+                ballLeft -= 10;
+                divBall.style.left = ballLeft + "px";
+            }
+
+
+        }
+
+        //divBall.style.background = "blue";
+        //divBall.style.left ="200px";
+
+
+
+    </script>
+
+
+</body>
+</html>

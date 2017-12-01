@@ -1,0 +1,88 @@
+
+body {
+    background-color: wheat ;
+    margin: 0;
+    font-family: 'Reenie Beanie', cursive;
+
+
+
+}
+
+div.grid{
+    display: grid;
+    grid-template-areas:
+            "meny"
+            "header"
+            "pakker"
+            "nav";
+    margin: 0;
+}
+
+div.meny{
+    grid-area: meny;
+}
+
+    ul {
+         list-style-type: none;
+         margin: 0;
+         padding: 0;
+     }
+
+    ul li {
+        display: inline;
+    }
+
+    ul a {
+        display: block;
+        width: 220px;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 2px;
+        color: whitesmoke;
+        font-weight: bold;
+        text-decoration: none;
+        background-color: #28abe3;
+    }
+    ul li :hover {
+        background-color: #91C4F2;
+    }
+
+
+
+div.header{
+    grid-area: header;
+    background-color: #28abe3;
+    text-align: center;
+}
+
+div.pakker{
+    grid-area: pakker;
+
+
+}
+
+div.bilde{
+    grid-area: bilde;
+}
+
+div.nav{
+    grid-area: nav;
+}
+
+
+img{
+    max-width: 400px;
+}
+
+
+@media(min-width: 500px) {
+        div.grid {
+        grid-template-columns: 1fr 3fr;
+        grid-template-areas:
+                "header header  header"
+                "meny   pakker  nav"
+                "many   pakker  nav"
+                "many   bilde   bilde";
+
+    }
+    }
