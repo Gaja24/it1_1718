@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Juletre</title>
+
+    <style>
+        #canvas{
+            width: 800px;
+            height: 800px;
+            margin: auto;
+            background: red;
+        }
+    </style>
+
+
+
+</head>
+<body>
+
+<canvas id="canvas" width="150" height="150"></canvas>
+
+<script>
+    var canvas = document.getElementById('canvas');
+    if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+        ctx.fillRect(25, 25, 100, 100);
+        ctx.clearRect(45, 45, 60, 60);
+        ctx.strokeRect(50, 50, 50, 50);
+    }
+
+</script>
+
+
+
+
+</body>
+</html>

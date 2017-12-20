@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>biler som passerer et punk</title>
+    <link rel="stylesheet" href="cssT.css">
+</head>
+<body>
+<div class="grid">
+    <input class="navn" type="text" placeholder="navn"> <br>
+    <input class="bilnummer" type="text" placeholder="bilnummer"> <br>
+    <input class="hastighet" type="number" placeholder="km/t"> <br>
+    <input class="trafikk" type="file" placeholder="trafikk"> <br>
+    <button class="send">Send</button>
+
+
+    <div class="liste">
+        <h2>topp 20</h2>
+
+        <table width="100%">
+            <thead>
+            <tr>
+                <th>Plassering</th><th>Navn</th><th>Bilnummer</th><th>Fart</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+
+
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
+<script src="mainT.js"></script>
+</body>
+</html>

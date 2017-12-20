@@ -1,0 +1,51 @@
+body{
+    background-color: lightgray;
+    text-align: center;
+}
+
+div.navn{
+    grid-area: navn;
+}
+
+div.bilnummer{
+    grid-area: bilnummer;
+}
+
+div.hastighet{
+    grid-area: hastighet;
+}
+div.trafikk{
+    grid-area: trafikk;
+}
+div.send{
+    grid-area: send;
+}
+
+div.liste{
+    grid-area: liste;
+}
+
+div.grid{
+    display: grid;
+    grid-template-areas:
+            "navn"
+            "bilnummer"
+            "hastighet"
+            "trafikk"
+            "liste";
+    grid-gap: 1px;
+}
+
+
+@media(min-width: 500px){
+div.grid{
+    grid-template-columns: 2fr 2fr;
+    grid-template-areas:
+            "navn       navn"
+            "bilnummer  hastighet"
+            "bilnummer  hastighet"
+            "trafikk    trafikk"
+            "send       send"
+            "liste      liste";
+}
+}
