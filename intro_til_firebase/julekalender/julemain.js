@@ -22,7 +22,9 @@ var db = firebase.firestore();
 
 var pakkeE= document.querySelector('.pakker');
 
-var ref = db.collection('julekalender').orderBy('luke', 'asc');
+var ref = db.collection('julekalender');
+var query = rel.orderBy('luke','desc');
+
 ref.onSnapshot(function (data) {
     var objekt = data.docs;
 
@@ -34,7 +36,7 @@ ref.onSnapshot(function (data) {
     }
 });
 
-<script>
+
 var pakkerE= document.querySelector('.pakker');
 
 
@@ -61,4 +63,3 @@ pakkerE.innerHTML +='<span class="brun"> ++++++ <br></span>';
 pakkerE.innerHTML +='<span class="brun"> ++++++ <br></span>';
 
 
-</script>

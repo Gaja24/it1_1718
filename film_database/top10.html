@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top 10 filmer</title>
+    <link rel="stylesheet" href="regfilm.css">
+</head>
+<body>
+<div class="grid">
+    <div class="meny">
+        <ul>
+            <li><a href="reg_film.html"> Registrer</a></li>
+            <li><a href="alle.html">Alle</a></li>
+            <li><a href="top10.html"> TOP 10!</a></li>
+            <li><a href="bot10.html">Bot 10</a></li>
+        </ul>
+    </div>
+    <h1 style="text-align: center">Top 10 filmer</h1>
+
+    <div class="skjemapakker">
+
+        <div class="skjemainfo">
+        </div>
+        <div class="skjemaform">
+                <h2>Topp 10</h2>
+                <table width="100%">
+                    <thead>
+                    <tr>
+                        <th>Plassering</th><th>tittel</th><th>Rating</th>
+                    </tr>
+                    </thead>
+                    <tbody class="poengliste">
+
+                    </tbody>
+                </table>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyA8AG8SMweTNFHrkMIv_sFzN0xAA2iX7xo",
+        authDomain: "firestore-224e3.firebaseapp.com",
+        databaseURL: "https://firestore-224e3.firebaseio.com",
+        projectId: "firestore-224e3",
+        storageBucket: "firestore-224e3.appspot.com",
+        messagingSenderId: "146684242749"
+    });
+    var mappe = db.collection('filmdb').orderBy('rating', 'desc').limit(10);
+    var topscore = 0;
+    mappe.onSnapshot(function(data){
+        listeE.innerHTML = "";
+        var plass = 0;
+        var dokumenter = data.docs;
+        for(var x in dokumenter){
+            plass += 1;
+            listeE.innerHTML += "<tr><td>"+ plass +"</td><td>" + dokumenter[x].data().navn + "</td><td> " + dokumenter[x].data().poeng + "</td></tr>"
+        }
+        topscore = dokumenter[0].data().poeng;
+        topscoreE.style.bottom = 100* topscore/grense + "%";
+        topscoreE.innerHTML = "Rekord - " + dokumenter[0].data().navn + " - " + topscore + " poeng";
+
+    });
+
+</body>
+</html>
