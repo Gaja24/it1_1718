@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fugleparken Pippip</title>
+    <link rel="stylesheet" href="fugleparken.css">
+</head>
+<body>
+<h1 style="text-align: center">Alle fugler</h1>
+
+<div class="grid">
+
+    <div class="meny">
+        <ul>
+            <li><a href="startsiden.html">Startsiden</a></li>
+            <li><a href="reg_pippip.html">Registrer fugl</a></li>
+            <li><a href="alle_fugler.html">Alle fugler</a></li>
+        </ul>
+    </div>
+
+    <div class="skjemapakker">
+
+        <div class="skjemainfo">
+
+        </div>
+
+        <div class="skjemaform">
+
+            <p class="full_bredde">
+
+            </p>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyA8AG8SMweTNFHrkMIv_sFzN0xAA2iX7xo",
+        authDomain: "firestore-224e3.firebaseapp.com",
+        databaseURL: "https://firestore-224e3.firebaseio.com",
+        projectId: "firestore-224e3",
+        storageBucket: "firestore-224e3.appspot.com",
+        messagingSenderId: "146684242749"
+    });
+
+
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+
+    var skjemaformE = document.querySelector('.skjemaform');
+
+    var mappe = db.collection('fugleparken');
+    mappe.onSnapshot(function (data) {
+        skjemaformE.innerHTML = "";
+        var plass = 0;
+        var dokumenter = data.docs;
+        for(var x in dokumenter){
+            var plass = x*1+1;
+            skjemaformE.innerHTML += '<li>'+ dokumenter[x].data().navn +', '+ dokumenter[x].data().kallenavn +', '+ dokumenter[x].data().aar +', '+ dokumenter[x].data().latinNavn + '<img src='+ dokumenter[x].data().bilde+'></li>'
+        }
+    });
+
+</script>
+</body>
+</html>

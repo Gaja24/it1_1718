@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fjelltur</title>
+    <link rel="stylesheet" href="innl.fjell.css">
+</head>
+<body>
+<div class="grid">
+    <div class="meny">
+        <ul class="hori">
+            <li><a href="fjell.html">Registrer fjell (Norge)</a></li>
+            <li><a href="alle.fjell.html">Alle</a></li>
+            <li><a href=""> TOP 10 krevende</a></li>
+            <li><a href="hoyeste_fjell.html">høyeste</a></li>
+            <li><a href="fylke.html">Fylke</a></li>
+        </ul>
+    </div>
+
+
+    <h1 style="text-align: center">Legg til fjell her</h1>
+
+    <div class="skjemapakker">
+
+        <div class="skjemainfo">
+        </div>
+        <div class="skjemaform">
+            <ul class="liste">
+
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyA8AG8SMweTNFHrkMIv_sFzN0xAA2iX7xo",
+        authDomain: "firestore-224e3.firebaseapp.com",
+        databaseURL: "https://firestore-224e3.firebaseio.com",
+        projectId: "firestore-224e3",
+        storageBucket: "firestore-224e3.appspot.com",
+        messagingSenderId: "146684242749"
+    });
+
+
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+
+    var listeE = document.querySelector('.liste');
+
+    var mappe = db.collection('fjelltur');
+    mappe.onSnapshot(function (data) {
+        listeE.innerHTML = "";
+        var plass = 0;
+        var dokumenter = data.docs;
+        for(var x in dokumenter){
+            var plass = x*1+1;
+            listeE.innerHTML += '<li>'+ dokumenter[x].data().title +', '+ dokumenter[x].data().hoyde +'moh</li>'
+        }
+    });
+</script>
+</body>
+</html>

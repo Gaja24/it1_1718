@@ -11,55 +11,27 @@ firebase.initializeApp(config);
 
 var db = firebase.firestore();
 
-
-/***for(var lukenummer = 1; lukenummer<=24; lukenummer++){
+/***Legge til 24 luker
+ for(var lukenummer = 1; lukenummer<=24; lukenummer++){
     db.collection("julekalender").add({
         luke: lukenummer
-
     });
+}
+ */
 
-}*/
-
-var pakkeE= document.querySelector('.pakker');
+var pakkerE = document.querySelector('.pakker');
 
 var ref = db.collection('julekalender');
-var query = rel.orderBy('luke','desc');
 
-ref.onSnapshot(function (data) {
+var query = ref.where('luke', '==', 24);
+
+
+query.onSnapshot(function (data) {
     var objekt = data.docs;
 
     for(var x in objekt){
 
-        pakkeE.innerHTML +=     "<div class='luke'>"+
-                                objekt[x].data().luke +
-                                "</div>";
+        pakkerE.innerHTML +=
+            objekt[x].data().luke
     }
 });
-
-
-var pakkerE= document.querySelector('.pakker');
-
-
-pakkerE.innerHTML +='<span class="gold"> + <br></span>';
-pakkerE.innerHTML +='<span class="gold"> +++ <br></span>';
-pakkerE.innerHTML +='<span class="gold"> + <br></span>';
-
-
-for(var y = 0; y<50; y=y+1){
-
-    for(var x=0; x<y+1; x=x+1){
-        if((x*y)%7===0){
-            pakkerE.innerHTML +='<span class="red"> + </span>';
-        }
-        else{
-            pakkerE.innerHTML +='<span class="green"> + </span>';
-        }
-    }
-
-    pakkerE.innerHTML +='<br>';
-}
-pakkerE.innerHTML +='<span class="brun"> ++++++ <br></span>';
-pakkerE.innerHTML +='<span class="brun"> ++++++ <br></span>';
-pakkerE.innerHTML +='<span class="brun"> ++++++ <br></span>';
-
-

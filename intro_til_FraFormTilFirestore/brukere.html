@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fra form til firestore</title>
+</head>
+<body>
+
+<form id="brukerskjema">
+    <input id="inpFornavn" type="text" placeholder="Fornavn" required>
+    <input id="inpEtternavn" placeholder="Etternavn" required>
+    <button type="submit">Legg til kunde</button>
+</form>
+
+<table border="1px">
+    <thead>
+    <tr>
+        <th>Fornavn</th>
+        <th>Etternavn</th>
+    </tr>
+    </thead>
+
+    <tbody id="brukertabell"></tbody>
+
+</table>
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyA8AG8SMweTNFHrkMIv_sFzN0xAA2iX7xo",
+        authDomain: "firestore-224e3.firebaseapp.com",
+        databaseURL: "https://firestore-224e3.firebaseio.com",
+        projectId: "firestore-224e3",
+        storageBucket: "firestore-224e3.appspot.com",
+        messagingSenderId: "146684242749"
+    });
+
+
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+
+    //oppretter kobling til "mappen" (collection) brukere i Firestore.
+    var brukere = db.collection('brukere');
+
+    //henter form-elementet "brukerskjema" fra DOM-en
+    var brukerskjema = document.querySelector('#brukerskjema');
+
+    //henter input-elementene fra DOM-en
+    var brukertabell = document.querySelector('#brukertabell');
+
+    //henter input-elementene fra DOM-en
+    var inputFornavn = document.querySelector('#inpFornavn');
+    var inputEtternavn = document.querySelector('#inpEtternavn');
+
+    //kaller på funksjonen registrerBrukwe når skjemaet sendes inn
+    brukerskjema.onsubmit = registrerBruker;
+
+    //Legger til ny bruker i firestore-databasen
+    function registrerBruker(evt) {
+        evt.preventDefault();
+
+        //Legger til nytt dokument i brukere-collectionen
+        brukere.add(
+            {
+                fornavn: inputFornavn.value,
+                etternavn: inputEtternavn.value
+            }
+        );
+
+        brukerskjema.reset();
+        inpFornavn.focus();
+    }
+
+
+
+    brukere.onSnapshot(function (data) {
+        var objekt = data.docs;
+
+        brukertabell.innerHTML = "";
+
+        for(var x in objekt){
+            var doc = objekt[x].data();
+
+            brukertabell.innerHTML +=`
+            <tr>
+            <td>${doc.fornavn} </td>
+            <td>${doc.etternavn} </td>
+            </tr>`
+
+        }
+
+
+    })
+
+</script>
+
+</body>
+</html>

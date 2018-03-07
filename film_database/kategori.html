@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrer ny film</title>
+    <link rel="stylesheet" href="regfilm.css">
+</head>
+<body>
+
+<div class="grid">
+    <header class="header"><h1>FilmDB</h1></header>
+    <nav class="nav">
+        <ul>
+            <li><a href="reg_film.html">registrer</a></li>
+            <li><a href="alle.html">Alle</a></li>
+            <li><a href="top10.html">Topp 10</a></li>
+            <li><a href="bot10.html">Bunn 10</a></li>
+            <li><a href="kategori.html">Kategori</a></li>
+            <li><a href="reg_film.html">Registrer</a></li>
+        </ul>
+    </nav>
+    <div class="main">
+
+        <select name="" id="inputGenre">
+            <option value="Velg">Velg</option>
+            <option value="Drama">Drama</option>
+            <option value="Triller">Triller</option>
+            <option value="Action">Action</option>
+            <option value="Komedie">Komedie</option>
+            <option value="Grøsser">Grøsser</option>
+            <option value="romantikk">Romantikk</option>
+            <option value="mysterie">Mysterie</option>
+            <option value="krim">Krim</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="familie">Familie</option>
+            <option value="animasjon">Animasjon</option>
+            <option value="sport">Sport</option>
+            <option value="biografi">Biografi</option>
+        </select>
+        <div class="filmer">
+
+        </div>
+
+
+
+    </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyA8AG8SMweTNFHrkMIv_sFzN0xAA2iX7xo",
+        authDomain: "firestore-224e3.firebaseapp.com",
+        databaseURL: "https://firestore-224e3.firebaseio.com",
+        projectId: "firestore-224e3",
+        storageBucket: "firestore-224e3.appspot.com",
+        messagingSenderId: "146684242749"
+    });
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+    var listeE = document.querySelector('.filmer');
+    var inputGenre = document.querySelector('#inputGenre');
+    var search = "";
+    inputGenre.addEventListener('change', function () {
+        search = inputGenre.value;
+        listeE.innerHTML = "";
+        var ref = db.collection('filmdb');
+        var query = ref.where('genre', '==', search);
+        query.onSnapshot(function (data) {
+            var objekt = data.docs;
+            for(var x in objekt){
+                listeE.innerHTML +=    "<div class='filmer'>"+ objekt[x].data().title + "</div>";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

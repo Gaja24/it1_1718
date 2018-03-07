@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fjelltur</title>
+    <link rel="stylesheet" href="innl.fjell.css">
+</head>
+<body>
+
+<div class="grid">
+    <div class="meny">
+        <ul class="hori">
+            <li><a href="fjell.html">Registrer fjell (Norge)</a></li>
+            <li><a href="alle.fjell.html">Alle</a></li>
+            <li><a href=""> TOP 10 krevende</a></li>
+            <li><a href="">høyeste</a></li>
+            <li><a href="fylke.html">Fylke</a></li>
+        </ul>
+    </div>
+
+
+    <h1 style="text-align: center">Legg til fjell her</h1>
+
+    <div class="skjemapakker">
+
+        <div class="skjemainfo">
+        </div>
+        <div class="skjemaform">
+            <p>
+                <label>Navn på fjell</label>
+                <input type="text" id="inputTitle">
+            </p>
+            <p>
+                <label>Fylke</label>
+                <select name="" id="inputFylke">
+                    <option value="Østfold">Østfold</option>
+                    <option value="Akershus">Akershus</option>
+                    <option value="Hedmark">Hedmark</option>
+                    <option value="Oppland">Oppland</option>
+                    <option value="Buskerud">Buskerud</option>
+                    <option value="Vestfold">Vestfold</option>
+                    <option value="Telemark">Telemark</option>
+                    <option value="Aust-Agder">Aust-Agder</option>
+                    <option value="Vest-Agder">Vest-Agder</option>
+                    <option value="Rogaland">Rogaland</option>
+                    <option value="Hordaland">Hordaland</option>
+                    <option value="Sogn og Fjordane">Sogn og Fjordane</option>
+                    <option value="Møre og Romsdal">Møre og Romsdal</option>
+                    <option value="Trøndelag">Trøndelag</option>
+                    <option value="Nordland">Nordland</option>
+                    <option value="Troms">Troms</option>
+                    <option value="Finnmark">TFinnmark</option>
+                </select>
+            </p>
+            <p>
+                <label>Høyde over havet(m)</label>
+                <input type="number" id="inputHight">
+            </p>
+            <p>
+                <label>Vurdering på vanskelighetsgrad <span id="outputRating"></span></label>
+                <input type="range" min="0" max="3" value="1.5" step="0.1" id="inputRating">
+            </p>
+            <p class="full_bredde">
+                <button id="buttonAdd" >Legg til fjell</button>
+            </p>
+        </div>
+    </div>
+
+</div>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyA8AG8SMweTNFHrkMIv_sFzN0xAA2iX7xo",
+        authDomain: "firestore-224e3.firebaseapp.com",
+        databaseURL: "https://firestore-224e3.firebaseio.com",
+        projectId: "firestore-224e3",
+        storageBucket: "firestore-224e3.appspot.com",
+        messagingSenderId: "146684242749"
+    });
+
+
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+    var inputTitle      = document.querySelector('#inputTitle');
+    var inputFylke      = document.querySelector('#inputFylke');
+    var inputHight       = document.querySelector('#inputHight');
+    var inputRating     = document.querySelector('#inputRating');
+    var outputRating    = document.querySelector('#outputRating');
+    var buttonAdd       = document.querySelector('#buttonAdd');
+    var eSkjemainfo     = document.querySelector('.skjemainfo');
+
+    outputRating.innerHTML = inputRating.value;
+    inputRating.oninput = function () {
+        outputRating.innerHTML = inputRating.value;
+    }
+    buttonAdd.addEventListener('click', function () {
+        db.collection("fjelltur").add({
+            title:  inputTitle.value,
+            fylke:  inputFylke.value,
+            hoyde:  inputHight.value*1,
+            rating: inputRating.value*1
+        })
+            .then(function(docRef) {
+                console.log("Fjellet er lagt til i databasen med ID: ", docRef.id);
+                eSkjemainfo.innerHTML = '<h3> Filmen, ' + inputTitle.value + ', ble lagt til i databasen </h3>';
+
+                inputTitle.value        ='';
+                inputFylke.value        ='Velg';
+                inputHight.value         ='';
+                inputRating.value       ='';
+                outputRating.innerHTML  = '';
+
+            })
+    });
+</script>
+
+</body>
+</html>

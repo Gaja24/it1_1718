@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fugler</title>
+    <link rel="stylesheet" href="fugleparken.css">
+</head>
+<body>
+
+
+<h1 style="text-align: center">Legg til fugl:)</h1>
+
+<div class="grid">
+
+    <div class="meny">
+        <ul>
+            <li><a href="startsiden.html">Startsiden</a></li>
+            <li><a href="reg_pippip.html">Registrer fugl</a></li>
+            <li><a href="alle_fugler.html">Alle fugler</a></li>
+        </ul>
+    </div>
+
+    <div class="skjemapakker">
+
+        <div class="skjemainfo">
+
+        </div>
+
+        <div class="skjemaform">
+
+            <p>
+                <label>Navn på fugl</label>
+                <input type="text" id="inputNavn" placeholder="Fuglenavn">
+            </p>
+
+            <p>
+                <label>Latinske navnet på fuglen</label>
+                <input type="text" id="inputLatinNavn" placeholder="Nomen eius avium">
+            </p>
+
+            <p>
+                <label>Fuglens kallenavn</label>
+                <input type="text" id="inputKallenavn">
+            </p>
+
+
+            <p>
+                <label>Land</label>
+                <select name="" id="inputLand">
+                    <option value="">velg</option>
+                    <option value="Norge">Norge</option>
+                    <option value="Sverige">Sverige</option>
+                    <option value="Danmark">Danmark</option>
+                    <option value="Finland">Finland</option>
+                    <option value="Island">Island</option>
+                </select>
+            </p>
+
+
+
+        <p>
+            <label>Året den kom til parken</label>
+            <input type="number" id="inputAAr">
+        </p>
+
+            <p>
+                <label>bildeadderesse</label>
+                <input type="text" id="inputBilde">
+            </p>
+
+        <p class="full_bredde">
+            <button id="buttonAdd" >Legg til fugl</button>
+        </p>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyA8AG8SMweTNFHrkMIv_sFzN0xAA2iX7xo",
+        authDomain: "firestore-224e3.firebaseapp.com",
+        databaseURL: "https://firestore-224e3.firebaseio.com",
+        projectId: "firestore-224e3",
+        storageBucket: "firestore-224e3.appspot.com",
+        messagingSenderId: "146684242749"
+    });
+
+
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+    var inputNavn = document.querySelector('#inputNavn');
+    var inputLatinNavn = document.querySelector('#inputLatinNavn');
+    var inputLand = document.querySelector('#inputLand');
+    var inputAAr = document.querySelector('#inputAAr');
+    var inputKallenavn = document.querySelector('#inputKallenavn');
+    var inputBilde = document.querySelector('#inputBilde');
+    var buttonAdd       = document.querySelector('#buttonAdd');
+    var eSkjemainfo     = document.querySelector('.skjemainfo');
+
+
+
+    buttonAdd.addEventListener('click', function () {
+        db.collection("fugleparken").add({
+            navn:       inputNavn.value,
+            latinNavn:  inputLatinNavn.value,
+            kallenavn:  inputKallenavn.value,
+            land:       inputLand.value,
+            bilde:      inputBilde.value,
+            aar:        inputAAr.value*1,
+        })
+            .then(function(docRef) {
+                console.log("Fuglen er lagt til i databasen med ID: ", docRef.id);
+                eSkjemainfo.innerHTML = '<h3> Fuglen, ' + inputNavn.value + ', ble lagt til i databasen </h3>';
+
+                inputNavn.value         ='';
+                inputLatinNavn.value    ='';
+                inputKallenavn.value       ='';
+                inputLand.value        ='Velg';
+                inputAAr.value        ='';
+                inputBilde.value        ='';
+
+
+            })
+    });
+
+</script>
+
+</body>
+</html>
