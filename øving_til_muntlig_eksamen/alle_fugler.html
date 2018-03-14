@@ -22,6 +22,7 @@
 
         <div class="skjemainfo">
 
+            </div>
         </div>
 
         <div class="skjemaform">
@@ -61,6 +62,7 @@
         for(var x in dokumenter){
             var plass = x*1+1;
             skjemaformE.innerHTML += '<li>'+ dokumenter[x].data().navn +', '+ dokumenter[x].data().kallenavn +', '+ dokumenter[x].data().aar +', '+ dokumenter[x].data().latinNavn + '<img src='+ dokumenter[x].data().bilde+'></li>'
+
         }
     });
 

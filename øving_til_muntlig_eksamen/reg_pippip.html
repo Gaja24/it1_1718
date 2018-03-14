@@ -30,23 +30,23 @@
 
             <p>
                 <label>Navn på fugl</label>
-                <input type="text" id="inputNavn" placeholder="Fuglenavn">
+                <input type="text" id="inputNavn" placeholder="Fuglenavn" required>
             </p>
 
             <p>
                 <label>Latinske navnet på fuglen</label>
-                <input type="text" id="inputLatinNavn" placeholder="Nomen eius avium">
+                <input type="text" id="inputLatinNavn" placeholder="Nomen eius avium" required>
             </p>
 
             <p>
                 <label>Fuglens kallenavn</label>
-                <input type="text" id="inputKallenavn">
+                <input type="text" id="inputKallenavn" required>
             </p>
 
 
             <p>
                 <label>Land</label>
-                <select name="" id="inputLand">
+                <select name="" id="inputLand" required>
                     <option value="">velg</option>
                     <option value="Norge">Norge</option>
                     <option value="Sverige">Sverige</option>
@@ -60,12 +60,17 @@
 
         <p>
             <label>Året den kom til parken</label>
-            <input type="number" id="inputAAr">
+            <input type="number" id="inputAAr" required>
         </p>
 
             <p>
-                <label>bildeadderesse</label>
+                <label>Bildeadderesse</label>
                 <input type="text" id="inputBilde">
+            </p>
+
+            <p>
+                <label>Text</label>
+                <input type="text" id="inputTekst">
             </p>
 
         <p class="full_bredde">
@@ -101,6 +106,7 @@
     var inputBilde = document.querySelector('#inputBilde');
     var buttonAdd       = document.querySelector('#buttonAdd');
     var eSkjemainfo     = document.querySelector('.skjemainfo');
+    var inputTekst = document.querySelector('#inputTekst');
 
 
 
@@ -112,6 +118,7 @@
             land:       inputLand.value,
             bilde:      inputBilde.value,
             aar:        inputAAr.value*1,
+            tekst:      inputTekst.value,
         })
             .then(function(docRef) {
                 console.log("Fuglen er lagt til i databasen med ID: ", docRef.id);
@@ -123,6 +130,7 @@
                 inputLand.value        ='Velg';
                 inputAAr.value        ='';
                 inputBilde.value        ='';
+                inputTekst.value        ='';
 
 
             })
