@@ -50,6 +50,12 @@ body{
     list-style: none;
     padding: 0;
 }
+.skjemainfo a{
+    text-decoration: none;
+}
+.skjemainfo a:hover{
+    background-color: #f7eac8;
+}
 
 .skjemaform{
     background-color: whitesmoke;
@@ -89,6 +95,7 @@ img{
     width: 105px;
     height: 250px;
 }
+
 
 div.grid{
     display: grid;

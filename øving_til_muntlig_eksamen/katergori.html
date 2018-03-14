@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fugleparken Pippip</title>
+    <link rel="stylesheet" href="fugleparken.css">
+</head>
+<body>
+<div class="grid">
+
+    <div class="meny">
+        <ul>
+            <li><a href="startsiden.html">Startsiden</a></li>
+            <li><a href="reg_pippip.html">Registrer fugl</a></li>
+            <li><a href="alle_fugler.html">Alle fugler</a></li>
+            <li><a href="katergori.html">Kategori</a></li>
+        </ul>
+    </div>
+
+    <div class="skjemapakker">
+
+        <div class="skjemainfo">
+            <p>
+                <a href="katergori.html">Tilbake til velg Kategori</a>
+            </p>
+
+        </div>
+
+        <div class="skjemaform" style="text-align: center">
+
+            <p>
+                <label> Velg Land</label>
+                <select name="" id="inputLand" required>
+                    <option value="">velg</option>
+                    <option value="Norge">Norge</option>
+                    <option value="Sverige">Sverige</option>
+                    <option value="Danmark">Danmark</option>
+                    <option value="Finland">Finland</option>
+                    <option value="Island">Island</option>
+                </select>
+
+
+        </div>
+    </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>
+
+<script>
+    firebase.initializeApp({
+        apiKey: "AIzaSyA8AG8SMweTNFHrkMIv_sFzN0xAA2iX7xo",
+        authDomain: "firestore-224e3.firebaseapp.com",
+        databaseURL: "https://firestore-224e3.firebaseio.com",
+        projectId: "firestore-224e3",
+        storageBucket: "firestore-224e3.appspot.com",
+        messagingSenderId: "146684242749"
+    });
+    // Initialize Cloud Firestore through Firebase
+    var db = firebase.firestore();
+    var skjemaformE = document.querySelector('.skjemaform');
+    var inputLand = document.querySelector('#inputLand');
+    var search = "";
+    inputLand.addEventListener('change', function () {
+        search = inputLand.value;
+        skjemaformE.innerHTML = "";
+        var ref = db.collection('fugleparken');
+        var query = ref.where('land', '==', search);
+        query.onSnapshot(function (data) {
+            var objekt = data.docs;
+            for(var x in objekt){
+                skjemaformE.innerHTML +=    "<div class='fugl'>"+
+                    "<H4>"+objekt[x].data().navn+"</H4>"+
+                    "<p class='aar'>"+objekt[x].data().aar+"</p>"+
+                    "<p class='land'>"+objekt[x].data().land+"</p>"+
+                    "<p class='kallenavn'>"+objekt[x].data().kallenavn+"</p>"+
+                    "<p class='bilde'>"+objekt[x].data().bilde+"</p>"+
+                    "</div>";
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>

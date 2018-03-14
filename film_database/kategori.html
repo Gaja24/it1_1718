@@ -71,7 +71,7 @@
         query.onSnapshot(function (data) {
             var objekt = data.docs;
             for(var x in objekt){
-                listeE.innerHTML +=    "<div class='filmer'>"+ objekt[x].data().title + "</div>";
+                listeE.innerHTML +=    "<div class='filmer'>"+ objekt[x].data().title +  "</div>";
             }
         });
     });
