@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fugleparken</title>
+    <link rel="stylesheet" href="fugleparken.css">
+</head>
+
+<style>
+
+    .video:hover{
+        background-color: #f7eac8;
+    }
+
+    .video2{
+        grid-area: video2;
+    }
+
+    .vidskrift{
+        grid-area: vidskrift;
+    }
+    @media(min-width: 500px) {
+        div.grid {
+            grid-template-columns: 2fr 2fr;
+            grid-template-areas:
+                    "video2     vidskrift";
+            grid-gap: 1px;
+        }
+    }
+
+
+
+</style>
+
+<body>
+
+<h1 style="text-align: center"> Aktivitet</h1>
+
+<div class="meny">
+    <ul>
+        <li><a href="startsiden.html">Startsiden</a></li>
+        <li><a href="reg_pippip.html">Registrer fugl</a></li>
+        <li><a href="alle_fugler.html">Alle fugler</a></li>
+        <li><a href="katergori.html">Kategori</a></li>
+        <li><a href="aktivitet.html">Aktivitet</a></li>
+    </ul>
+
+</div>
+
+<div class="video">
+    <div class="grid">
+    <div class="video2">
+        <video autoplay loop>
+            <source src="bilder/video/videoplayback.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="vidskrift">
+        <p style="color: #28abe3;" >
+            Idag hadde vi Happy Fugle Dag. Dette var kjempeartig:)
+        </p>
+    </div>
+    </div>
+</div>
+
+
+</body>
+</html>

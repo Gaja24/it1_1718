@@ -16,6 +16,7 @@
             <li><a href="reg_pippip.html">Registrer fugl</a></li>
             <li><a href="alle_fugler.html">Alle fugler</a></li>
             <li><a href="katergori.html">Kategori</a></li>
+            <li><a href="aktivitet.html">Aktivitet</a></li>
         </ul>
     </div>
 
@@ -28,10 +29,7 @@
 
         <div class="skjemaform">
 
-            <p class="full_bredde">
-
-            </p>
-
+            <p class="full_bredde"></p>
         </div>
     </div>
 
@@ -58,12 +56,13 @@
     var mappe = db.collection('fugleparken');
     mappe.onSnapshot(function (data) {
         skjemaformE.innerHTML = "";
-        var plass = 0;
-        var dokumenter = data.docs;
-        for(var x in dokumenter){
-            var plass = x*1+1;
-            skjemaformE.innerHTML += '<li>'+ dokumenter[x].data().navn +', '+ dokumenter[x].data().kallenavn +', '+ dokumenter[x].data().aar +', '+ dokumenter[x].data().latinNavn + '<img src='+ dokumenter[x].data().bilde+'></li>'
-
+        var objekt = data.docs;
+        for(var x in objekt){
+                skjemaformE.innerHTML += "<div class='mini'>"+
+                    "<H4>"+objekt[x].data().navn+"</H4>"+
+                    "<img src="+ objekt[x].data().bilde+ ">"+
+                    "<p class='kallenavn'>"+objekt[x].data().kallenavn+"</p>"+
+                    "</div>";
         }
     });
 

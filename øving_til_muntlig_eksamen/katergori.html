@@ -14,6 +14,7 @@
             <li><a href="reg_pippip.html">Registrer fugl</a></li>
             <li><a href="alle_fugler.html">Alle fugler</a></li>
             <li><a href="katergori.html">Kategori</a></li>
+            <li><a href="aktivitet.html">Aktivitet</a></li>
         </ul>
     </div>
 
@@ -71,11 +72,12 @@
             for(var x in objekt){
                 skjemaformE.innerHTML +=    "<div class='fugl'>"+
                     "<H4>"+objekt[x].data().navn+"</H4>"+
-                    "<p class='aar'>"+objekt[x].data().aar+"</p>"+
-                    "<p class='land'>"+objekt[x].data().land+"</p>"+
+                    "<img src="+ objekt[x].data().bilde+ ">"+
                     "<p class='kallenavn'>"+objekt[x].data().kallenavn+"</p>"+
-                    "<p class='bilde'>"+objekt[x].data().bilde+"</p>"+
+                    "<p class='aar'>"+objekt[x].data().aar+"</p>"+
+                    "<p class='tekst'>"+objekt[x].data().tekst+"</p>"+
                     "</div>";
+
             }
         });
     });
